@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+{% block title %}Inscription provider{% endblock %}
+
+{% block body %}
+
+<div class="containerForm">
+
+    <h1 class="h3 mb-5 font-weight-normal">Inscription prestataire de services</h1>
+
+    {{ form_errors(registrationForm) }}
+
+    {{ form_start(registrationForm) }}
+
+    {# {{ csrf_token('intention') }} #}
+
+    {{ form_row(registrationForm.firstName, {'attr':{'class':'form form-control'}}) }}
+    {{ form_row(registrationForm.lastName, {'attr':{'class':'form form-control'}}) }}
+    {{ form_row(registrationForm.email, {'attr':{'class':'form form-control'}}) }}
+
+    {{ form_row(registrationForm.city, {'attr':{'class':'form form-control'}}) }}
+    {{ form_row(registrationForm.serviceOffered, {'attr':{'class':'form form-control'}}) }}
+
+    {{ form_row(registrationForm.plainPassword, {
+    label: 'Password'
+    }) }} <br>
+
+    <button type="submit" class="btn btn-info">S'inscrire</button>
+    {{ form_end(registrationForm) }}
+
+</div>
+{% endblock %}

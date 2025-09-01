@@ -7,14 +7,22 @@
 {% block title %}UserClient{% endblock %}
 
 {% block body %}
-    <h1 class="text-center mt-5">Recherche de services</h1>
 
-      <div class="d-flex justify-content-center align-items-center">
-        <a href="{{ path('register_user_client') }}" class="btn btn-info btn-lg m-3">Inscription Client</a>
-        <a href="{{ path('app_login') }}" class="btn btn-outline-primary btn-lg m-3">Connexion Client</a>
-    </div>
+     <div class="services mt-5">
+            <h1 class="text-center">Demandes de services</h1>
+            {% for user_client in user_clients %}
+                <div class="service border rounded p-3 m-2">
+                    <h5>Service recherché : {{ user_client.requestedService }}</h5>
+                    <p>Client : {{ user_client.firstName }} {{ user_client.lastName }}</p>
+                    <p>Email : {{ user_client.email }}</p>
+                    <p>Téléphone : {{ user_client.phone }}</p>
+                </div>
+            {# {% else %}
+                <p>Aucune demande de service pour le moment.</p> #}
+            {% endfor %}
+        </div>
 
- {#     <table class="table">
+      {# <table class="table bordered">
         <thead>
             <tr>
                 <th>Id</th>
@@ -36,9 +44,9 @@
                 <td>{{ user_client.email }}</td>
                 <td>{{ user_client.requestedService }}</td>
                 <td>
-                    <a href="{{ path('app_user_client_show', {'id': user_client.id}) }}">show</a>
-                    <a href="{{ path('app_user_client_edit', {'id': user_client.id}) }}">edit</a>
-                </td>
+                    <a class="btn btn-info" href="{{ path('app_user_client_show', {'id': user_client.id}) }}">voir</a>
+                    {# <a href="{{ path('app_user_client_edit', {'id': user_client.id}) }}">edit</a> #}
+     {#           </td>
             </tr>
         {% else %}
             <tr>
@@ -46,8 +54,8 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table> #}
 
-    <a href="{{ path('app_user_client_new') }}">Create new</a> #}
+    {# <a href="{{ path('app_user_client_new') }}">Create new</a> #}
 
 {% endblock %}

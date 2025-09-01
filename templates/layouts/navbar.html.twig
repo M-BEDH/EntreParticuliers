@@ -1,0 +1,46 @@
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+	<div class="container">
+		<a class="navbar-brand title" href="{{ path('app_home') }}">Entre Particuliers</a>
+
+		<!-- Bouton burger -->
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+			aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarScroll">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+
+		<!-- Accueil -->
+				<li class="nav-item">
+					<a class="nav-link btn btn-primary" href="{{ path('app_home') }}">Accueil</a>
+				</li>
+        <!-- Si CONNECTÉ -->
+				{% if app.user %}
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+				</li>
+
+				{% else %}
+
+		<!-- Si NON CONNECTÉ -->
+				   <li class="nav-item">
+					   <a class="nav-link btn btn-primary" href="{{ path('register_service_provider') }}">Inscription Prestataire</a>
+				   </li>
+				   <li class="nav-item">
+					   <a class="nav-link btn btn-primary" href="{{ path('register_user_client') }}">Inscription Client</a>
+				   </li>
+				{# <li class="nav-item">
+					<a class="nav-link btn btn-primary" href="{{ path('app_login') }}">Se connecter</a>
+				</li> #}
+				{% endif %}
+            </ul>
+</div>
+        </div>
+</nav>

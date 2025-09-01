@@ -1,11 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}ServiceProvider index{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+{% block title %}ServiceProvider{% endblock %}
 
 {% block body %}
-    <h1>ServiceProvider index</h1>
+    <h1 class="text-center mt-5">Prestataire de service</h1>
 
-    <table class="table">
+       <div class="d-flex justify-content-center align-items-center">
+        <a href="{{ path('register_service_provider') }}" class="btn btn-info btn-lg m-3">Inscription Prestataire</a>
+        <a href="{{ path('app_login') }}" class="btn btn-outline-primary btn-lg m-3">Connexion Prestataire</a>
+    </div>
+
+ {#    <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
@@ -39,5 +48,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_service_provider_new') }}">Create new</a>
+    <a href="{{ path('app_service_provider_new') }}">Create new</a> #}
 {% endblock %}

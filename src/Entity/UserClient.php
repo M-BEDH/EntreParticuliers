@@ -4,10 +4,25 @@ namespace App\Entity;
 
 use App\Repository\UserClientRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 #[ORM\Entity(repositoryClass: UserClientRepository::class)]
-class UserClient
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+
+class UserClient implements PasswordAuthenticatedUserInterface, UserInterface
 {
+    public function getUserIdentifier(): string
+    {
+        return $this->email ?? '';
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Si tu stockes des données temporaires sensibles, efface-les ici
+    }
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -28,6 +43,9 @@ class UserClient
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $requestedService = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $password = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -41,7 +59,6 @@ class UserClient
     public function setFirstName(string $firstName): static
     {
         $this->firstName = $firstName;
-
         return $this;
     }
 
@@ -53,7 +70,6 @@ class UserClient
     public function setLastName(string $lastName): static
     {
         $this->lastName = $lastName;
-
         return $this;
     }
 
@@ -65,7 +81,6 @@ class UserClient
     public function setPhone(?string $phone): static
     {
         $this->phone = $phone;
-
         return $this;
     }
 
@@ -77,7 +92,6 @@ class UserClient
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
 
@@ -89,7 +103,25 @@ class UserClient
     public function setRequestedService(?string $requestedService): static
     {
         $this->requestedService = $requestedService;
-
         return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    /**
+     * Retourne le rôle de l'utilisateur client
+     */
+    public function getRoles(): array
+    {
+        return ['ROLE_CLIENT'];
     }
 }

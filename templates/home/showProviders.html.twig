@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+{% block title %}ServiceProvider{% endblock %}
+
+{% block body %}
+
+         <div class="services mt-4">
+            <h1 class="text-center">Offres de services</h1>
+            {% for service in service_providers %}
+                <div class="service border rounded p-3 m-2">
+                    <h5>Service proposé : {{ service.serviceOffered }}</h5>
+                    <p>Prestataire : {{ service.firstName }} {{ service.lastName }}</p>
+                    <p>Email : {{ service.email }}</p>
+                    <p>Prix / heure: {{ service.hourPrice }} €</p>
+                    <p>Ville : {{ service.city }}</p>
+                    <p>Déplacement : {{ service.businessTrip ? 'Oui' : 'Non' }}</p>
+                </div>
+            {# {% else %}
+                <p>Aucun service proposé pour le moment.</p> #}
+            {% endfor %}
+        </div>
+   
+
+   {# <table class="table bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>FirstName</th>
+                <th>LastName</th>
+                <th>City</th>
+                <th>ServiceOffered</th>
+                <th>BusinessTrip</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service_provider in service_providers %}
+            <tr>
+                <td>{{ service_provider.id }}</td>
+                <td>{{ service_provider.firstName }}</td>
+                <td>{{ service_provider.lastName }}</td>
+                <td>{{ service_provider.city }}</td>
+                <td>{{ service_provider.serviceOffered }}</td>
+                <td>{{ service_provider.businessTrip ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a class="btn btn-info" href="{{ path('app_service_provider_show', {'id': service_provider.id}) }}">voir</a>
+                    {# <a href="{{ path('app_service_provider_edit', {'id': service_provider.id}) }}">edit</a> #}
+        {#}        </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> #}
+
+    {# <a href="{{ path('app_service_provider_new') }}">Create new</a>  #}
+{% endblock %}

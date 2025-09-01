@@ -4,10 +4,25 @@ namespace App\Entity;
 
 use App\Repository\ServiceProviderRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+use Symfony\Component\Security\Core\User\UserInterface;
+
 
 #[ORM\Entity(repositoryClass: ServiceProviderRepository::class)]
-class ServiceProvider
+
+#[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
+#[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
+class ServiceProvider implements PasswordAuthenticatedUserInterface, UserInterface
 {
+    public function getUserIdentifier(): string
+    {
+        return $this->email ?? '';
+    }
+
+    public function eraseCredentials(): void
+    {
+        // Si tu stockes des données temporaires sensibles, efface-les ici
+    }
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -30,6 +45,12 @@ class ServiceProvider
 
     #[ORM\Column(length: 255)]
     private ?string $email = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $password = null;
+
+    #[ORM\Column]
+    private ?float $hourPrice = null;
 
     public function getId(): ?int
     {
@@ -104,6 +125,38 @@ class ServiceProvider
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    public function getPassword(): ?string
+    {
+        return $this->password;
+    }
+
+    public function setPassword(string $password): static
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Retourne le rôle du prestataire de service
+     */
+    public function getRoles(): array
+    {
+        return ['ROLE_PROVIDER'];
+    }
+
+    public function getHourPrice(): ?float
+    {
+        return $this->hourPrice;
+    }
+
+    public function setHourPrice(float $hourPrice): static
+    {
+        $this->hourPrice = $hourPrice;
 
         return $this;
     }

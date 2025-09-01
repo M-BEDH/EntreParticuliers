@@ -1,11 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
 {% block title %}ServiceProvider{% endblock %}
 
 {% block body %}
     <h1>ServiceProvider</h1>
 
-    <table class="table">
+    <table class="table bordered">
         <tbody>
             <tr>
                 <th>Id</th>
@@ -34,9 +38,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_service_provider_index') }}">back to list</a>
+    <a class="btn btn-outline-secondary" href="{{ path('app_show_provider') }}">back to list</a>
 
-    <a href="{{ path('app_service_provider_edit', {'id': service_provider.id}) }}">edit</a>
+    <a class="btn btn-outline-warning" href="{{ path('app_service_provider_edit', {'id': service_provider.id}) }}">edit</a>
 
     {{ include('service_provider/_delete_form.html.twig') }}
 {% endblock %}
