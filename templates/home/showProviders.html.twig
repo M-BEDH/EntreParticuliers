@@ -9,9 +9,9 @@
 {% block body %}
 
          <div class="services mt-4">
-            <h1 class="text-center">Offres de services</h1>
+            <h1 class="text-center mb-5">Offres de services</h1>
             {% for service in service_providers %}
-                <div class="service border rounded p-3 m-2">
+                <div class="service border rounded p-3">
                     <h5>Service proposé : {{ service.serviceOffered }}</h5>
                     <p>Prestataire : {{ service.firstName }} {{ service.lastName }}</p>
                     <p>Email : {{ service.email }}</p>

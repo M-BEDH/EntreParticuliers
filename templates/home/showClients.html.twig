@@ -9,9 +9,9 @@
 {% block body %}
 
      <div class="services mt-5">
-            <h1 class="text-center">Demandes de services</h1>
+            <h1 class="text-center mb-5">Demandes de services</h1>
             {% for user_client in user_clients %}
-                <div class="service border rounded p-3 m-2">
+                <div class="service border rounded p-3">
                     <h5>Service recherché : {{ user_client.requestedService }}</h5>
                     <p>Client : {{ user_client.firstName }} {{ user_client.lastName }}</p>
                     <p>Email : {{ user_client.email }}</p>
