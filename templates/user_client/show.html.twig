@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}UserClient{% endblock %}
+
+{% block body %}
+    <h1>UserClient</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ user_client.id }}</td>
+            </tr>
+            <tr>
+                <th>FirstName</th>
+                <td>{{ user_client.firstName }}</td>
+            </tr>
+            <tr>
+                <th>LastName</th>
+                <td>{{ user_client.lastName }}</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>{{ user_client.phone }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ user_client.email }}</td>
+            </tr>
+            <tr>
+                <th>RequestedService</th>
+                <td>{{ user_client.requestedService }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_user_client_index') }}">back to list</a>
+
+    <a href="{{ path('app_user_client_edit', {'id': user_client.id}) }}">edit</a>
+
+    {{ include('user_client/_delete_form.html.twig') }}
+{% endblock %}
