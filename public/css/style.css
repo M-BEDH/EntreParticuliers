@@ -36,6 +36,6 @@ div.service {
     background: #FFF;
     background: linear-gradient(172deg,#ffffff 0%, #a7a7ab38 57%, #7a81823f 109%);
     /* background: linear-gradient(177deg,rgba(255, 255, 255, 1) 0%, rgba(167, 167, 171, 1) 97%, rgba(122, 129, 130, 1) 100%); */
-    width: 50%;
+    width: 30%;
     border: 1mm ridge #d1d1d1 !important;
 }
