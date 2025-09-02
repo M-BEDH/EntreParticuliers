@@ -19,6 +19,15 @@ class UserClientType extends AbstractType
             ->add('firstName')
             ->add('lastName')
             // ->add('phone')
+            ->add('requestedService', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez indiquer la demande de service',
+                    ]),
+                ],
+                'label' => 'Demande de service',
+                'required' => true,
+            ])
             ->add('email')
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
@@ -39,17 +48,7 @@ class UserClientType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-            ->add('requestedService', null, [
-                'constraints' => [
-                    new NotBlank([
-                        'message' => 'Veuillez indiquer la demande de service',
-                    ]),
-                ],
-                'label' => 'Demande de service',
-                'required' => true,
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
