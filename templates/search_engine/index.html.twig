@@ -8,9 +8,6 @@
 
 {% block body %}
 
-
-{# <h1 class="mt-4 text-center">Resultat de la recherche du mot {{ word }}</h1> #}
-
  {% if app.user and is_granted('ROLE_CLIENT') %}
   <h2 class="text-center mt-4 mb-5">Offres de services pour {{ word }} </h2>
   <table class="table bordered mt-4">
