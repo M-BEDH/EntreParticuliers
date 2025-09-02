@@ -20,9 +20,23 @@ class ServiceProviderType extends AbstractType
             ->add('lastName')
             ->add('city')
             ->add('email')
-            ->add('serviceOffered')
-            ->add('businessTrip')
-            ->add('hourPrice')
+            ->add('serviceOffered', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez indiquer l\'offre de service',
+                    ]),
+                ],
+                'label' => 'Offre de service :',
+                'required' => true,
+            ])
+            ->add('businessTrip', null, [
+                'label' => 'Déplacement professionnel :',
+                'required' => false,
+            ])
+            ->add('hourPrice', null, [
+                'label' => 'Prix à l\'heure :',
+                'required' => true,
+            ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent correspondre',

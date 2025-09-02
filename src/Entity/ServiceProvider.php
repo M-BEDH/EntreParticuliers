@@ -21,7 +21,7 @@ class ServiceProvider implements PasswordAuthenticatedUserInterface, UserInterfa
 
     public function eraseCredentials(): void
     {
-        // Si tu stockes des données temporaires sensibles, efface-les ici
+         // stocker les donées sensibles ici
     }
     #[ORM\Id]
     #[ORM\GeneratedValue]

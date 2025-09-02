@@ -25,7 +25,7 @@ class UserClientType extends AbstractType
                         'message' => 'Veuillez indiquer la demande de service',
                     ]),
                 ],
-                'label' => 'Demande de service',
+                'label' => 'Demande de service :',
                 'required' => true,
             ])
             ->add('email')
