@@ -34,7 +34,7 @@ class SecurityController extends AbstractController
                 $token = new UsernamePasswordToken($user, 'main', $user->getRoles());
                 $tokenStorage->setToken($token);
                 if (in_array('ROLE_CLIENT', $user->getRoles())) {
-                    return new RedirectResponse($this->generateUrl('app_show_provider'));
+                    return new RedirectResponse($this->generateUrl('app_show_providers'));
                 }
                 if (in_array('ROLE_PROVIDER', $user->getRoles())) {
                     return new RedirectResponse($this->generateUrl('app_show_clients'));

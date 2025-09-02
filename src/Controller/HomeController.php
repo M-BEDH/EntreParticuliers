@@ -29,7 +29,7 @@ final class HomeController extends AbstractController
 
 
 
-     #[Route('/showProvider', name: 'app_show_provider')]
+     #[Route('/showProvider', name: 'app_show_providers')]
     public function showProvider(ServiceProviderRepository $serviceProviderRepository): Response
     {
         return $this->render('home/showProviders.html.twig', [
