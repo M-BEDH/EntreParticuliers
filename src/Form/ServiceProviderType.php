@@ -20,6 +20,9 @@ class ServiceProviderType extends AbstractType
             ->add('lastName')
             ->add('city')
             ->add('email')
+            ->add('serviceOffered')
+            ->add('businessTrip')
+            ->add('hourPrice')
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent correspondre',
@@ -40,8 +43,6 @@ class ServiceProviderType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('serviceOffered')
-            // ->add('businessTrip')
         ;
     }
 

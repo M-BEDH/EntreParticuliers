@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Result Recherche{% endblock %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{% endblock %}
+
+{% block body %}
+
+
+{# <h1 class="mt-4 text-center">Resultat de la recherche du mot {{ word }}</h1> #}
+
+ {% if app.user and is_granted('ROLE_CLIENT') %}
+  <h2 class="text-center mt-4 mb-5">Offres de services pour {{ word }} </h2>
+  <table class="table bordered mt-4">
+      <thead>
+          <tr>
+               <th>Nom</th>
+              <th>Prénom</th>
+              <th>Ville</th> 
+              <th>Services proposés</th>
+              <th>prix / heure</th>
+              <th>Déplacement</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for service in services %}
+              <tr>
+                   <td>{{ service.lastName }}</td>
+                  <td>{{ service.firstName }}</td>
+                  <td>{{ service.city }}</td> 
+                  <td>{{ service.serviceOffered }}</td>
+                    <td>{{ service.hourPrice }} €</td>
+                  <td>{{ service.businessTrip ? 'Oui' : 'Non' }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+  {% endif %}
+
+ {% if app.user and is_granted('ROLE_PROVIDER') %}
+ <h2 class="text-center mt-4 mb-5">Demandes de services pour {{ word }}</h2>
+
+     <table class="table bordered">
+      <thead>
+          <tr>
+              <th>Nom</th>
+              <th>Prénom</th>
+              
+              <th>Services demandés</th>
+          </tr>
+      </thead>
+      <tbody>
+          {% for service in services %}
+              <tr>
+                  <td>{{ service.lastName }}</td>
+                  <td>{{ service.firstName }}</td>
+            
+                  <td>{{ service.servicesRequested }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+ {% endif %} 
+
+{% endblock %}

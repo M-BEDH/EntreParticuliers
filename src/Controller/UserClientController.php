@@ -47,6 +47,7 @@ final class UserClientController extends AbstractController
     {
         return $this->render('user_client/show.html.twig', [
             'user_client' => $userClient,
+            'id' => $id
         ]);
     }
 

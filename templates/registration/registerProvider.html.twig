@@ -8,7 +8,7 @@
 
 {% block body %}
 
-<div class="containerForm">
+<div class="containerForm mt-5">
 
     <h1 class="h3 mb-5 font-weight-normal">Inscription prestataire de services</h1>
 
@@ -16,13 +16,12 @@
 
     {{ form_start(registrationForm) }}
 
-    {# {{ csrf_token('intention') }} #}
-
     {{ form_row(registrationForm.firstName, {'attr':{'class':'form form-control'}}) }}
     {{ form_row(registrationForm.lastName, {'attr':{'class':'form form-control'}}) }}
     {{ form_row(registrationForm.email, {'attr':{'class':'form form-control'}}) }}
-
-    {{ form_row(registrationForm.city, {'attr':{'class':'form form-control'}}) }}
+     {{ form_row(registrationForm.city, {'attr':{'class':'form form-control'}}) }}
+    {{ form_row(registrationForm.hourPrice, {'attr':{'class':'form form-control'}}) }}
+    {{ form_row(registrationForm.businessTrip, {'label': 'Acceptez-vous les déplacements dans un rayon de 10 km ?'}) }}
     {{ form_row(registrationForm.serviceOffered, {'attr':{'class':'form form-control'}}) }}
 
     {{ form_row(registrationForm.plainPassword, {

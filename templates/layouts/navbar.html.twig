@@ -17,18 +17,18 @@
 			<ul class="navbar-nav me-auto mb-2 mb-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
 
 		<!-- Accueil -->
-				<li class="nav-item">
+				<li class="nav-item ms-6">
 					<a class="nav-link btn btn-primary" href="{{ path('app_home') }}">Accueil</a>
 				</li>
         <!-- Si CONNECTÉ -->
-				{% if app.user %}
 
-				<li class="nav-item">
-					<a class="nav-link" href="{{ path('app_logout') }}">Se déconnecter</a>
+
+			{% if app.user %}
+               <li class="nav-item">
+					<a class="nav-link btn btn-primary" href="{{ path('app_logout') }}">Se déconnecter</a>
 				</li>
 
-				{% else %}
-
+			{% else %}
 		<!-- Si NON CONNECTÉ -->
 				   <li class="nav-item">
 					   <a class="nav-link btn btn-primary" href="{{ path('register_service_provider') }}">Inscription Prestataire</a>
@@ -36,11 +36,34 @@
 				   <li class="nav-item">
 					   <a class="nav-link btn btn-primary" href="{{ path('register_user_client') }}">Inscription Client</a>
 				   </li>
-				{# <li class="nav-item">
-					<a class="nav-link btn btn-primary" href="{{ path('app_login') }}">Se connecter</a>
-				</li> #}
-				{% endif %}
-            </ul>
-</div>
-        </div>
+				
+			{% endif %}
+
+			{% if app.user and is_granted('ROLE_PROVIDER') %}
+
+				<li class="nav-item">
+					<a class="nav-link btn btn-primary" href="{{ path('app_service_provider_edit', {'id': app.user.id}) }}">Profil-prestataire</a>
+				</li>
+
+				<form class="d-flex me-5 ms-5" method="GET" action="{{ path('app_search_engine_offered') }}">
+					<input name="word" class="form-control me-2 navSearch" type="search" placeholder="Search"
+						aria-label="Search" />
+					<button data-turbo=false class="btn btn-outline-light" type="submit">Search</button>
+				</form>
+
+  			{% elseif app.user and is_granted('ROLE_CLIENT') %}
+					<li class="nav-item">
+						<a class="nav-link btn btn-primary" href="{{ path('app_user_client_edit', {'id': app.user.id}) }}">Profil-client</a>
+					</li>
+
+				<form class="d-flex me-5 ms-5" method="GET" action="{{ path('app_search_engine_requested') }}">
+					<input name="word" class="form-control me-2 navSearch" type="search" placeholder="Search"
+						aria-label="Search" />
+					<button data-turbo=false class="btn btn-outline-light" type="submit">Search</button>
+				</form>
+ 		 {% endif %}
+
+		 </ul>
+		</div>
+    </div>
 </nav>

@@ -40,4 +40,19 @@ class ServiceProviderRepository extends ServiceEntityRepository
     //            ->getOneOrNullResult()
     //        ;
     //    }
+
+
+     public function searchEngine(string $query){
+            //crée un objet de la requete qui permet de construire la requete de recherche
+            return $this->createQueryBuilder('p')
+            //recherche les elements dont le nom contient la requete de la recherche
+                ->where('p.serviceOffered LIKE :query')
+                // OU recherche les elements dont la description contient la requete de recherche
+                // ->orWhere('p.serviceOffered LIKE :query')
+                // //defini la valeur de la variable "query" pour la requete
+                ->setParameter('query', '%' . $query . '%')
+                //execute la requete et recupere les resultats
+                ->getQuery()
+                ->getResult();
+        }
 }

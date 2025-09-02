@@ -11,14 +11,16 @@
 
     <h1 class="text-center mt-5">Bienvenue sur le site de services entre particuliers</h1>
     {% if app.user and is_granted('ROLE_PROVIDER') %}
+
         <p class="fw-bold text-center">Vous êtes connecté en tant que prestataire.</p>
         <div class="d-flex justify-content-center align-items-center">
             <a class="btn btn-primary btn-lg m-1 w-30" href="{{ path('app_show_clients') }}">Voir les demandes de services</a>
         </div>
+        
     {% elseif app.user and is_granted('ROLE_CLIENT') %}
         <p class="fw-bold text-center">Vous êtes connecté en tant que client.</p>
         <div class="d-flex justify-content-center align-items-center">
-            <a class="btn btn-success btn-lg m-1 w-30" href="{{ path('app_show_provider') }}">Voir les offres de services prestataire</a>
+            <a class="btn btn-success btn-lg m-1 w-30" href="{{ path('app_show_provider') }}">Voir les offres de services prestataires</a>
         </div>
     {% else %}
         <div class="d-flex justify-content-center align-items-center">

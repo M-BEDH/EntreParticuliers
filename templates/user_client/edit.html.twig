@@ -3,11 +3,14 @@
 {% block title %}Edit UserClient{% endblock %}
 
 {% block body %}
-    <h1>Edit UserClient</h1>
+<div class="containerForm mt-3">
+    <h1>Modifier votre profil</h1>
 
     {{ include('user_client/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_user_client_index') }}">back to list</a>
-
     {{ include('user_client/_delete_form.html.twig') }}
+    <a class="btn btn-outline-secondary mt-3" href="{{ path('app_show_provider') }}">Retour aux services proposés</a>
+
+    
+
+</div>
 {% endblock %}
