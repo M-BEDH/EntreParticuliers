@@ -1,8 +1,7 @@
 .btn-outline-primary {
-    background: linear-gradient(206deg, #484e5b 0%, #a5b3be 100%, #d8ebf2 100%);
-    filter: brightness(1.75);
+    background: linear-gradient(206deg, #5d6370 0%, #a5b3be 100%, #d8ebf2 100%);
     border-color: #747475;
-    color: #222529;
+    color: #ffffff;
     padding: 10px;
 }
 
