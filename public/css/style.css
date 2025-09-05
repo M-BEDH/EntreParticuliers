@@ -1,5 +1,4 @@
 body {
-<<<<<<< HEAD
     /* font-family: Georgia, serif; */
     /* font-family: serif; */
     font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
@@ -7,9 +6,6 @@ body {
 
 .container {
     background: url('../images/background.jpg') no-repeat center center fixed;
-=======
-    background-color: #76ffff3f;
->>>>>>> 6270f608bc4935596fcebd64315b6f1066c04711
 }
 
 .containerForm {
