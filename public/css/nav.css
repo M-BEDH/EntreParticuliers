@@ -1,0 +1,29 @@
+.navbar {
+    height: 5rem;
+    position: sticky;
+    top: 0px;
+    z-index: 10;
+    margin-bottom: 2rem;
+}
+
+.bg-body-tertiary {
+    background: #020024;
+    background: linear-gradient(90deg, #020024 0%, #090979 49%, #00d4ff 100%); 
+    color: white !important;
+}
+
+.navbar-brand,
+.title {
+    color: white !important;
+}
+
+li a.nav-link {
+    color: white !important;
+}
+
+li a.nav-link:hover {
+    /* background: linear-gradient(206deg, #484e5b 0%, #a5b3be 100%, #d8ebf2 100%); */
+    background-color: #b5d7e2;
+    color: #000 !important;
+
+}

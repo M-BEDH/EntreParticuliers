@@ -2,36 +2,38 @@
 
 {% block stylesheets %}
 	<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/img.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/btn.css') }}">
+
 {% endblock %}
-
-{% block title %}Le site de services entre particuliers{% endblock %}
-
+{% block title %}Le site de services entre particuliers
+{% endblock %}
 {% block body %}
 
 
-    <h1 class="text-center mt-5">Bienvenue sur le site de services entre particuliers</h1>
-    {% if app.user and is_granted('ROLE_PROVIDER') %}
+	<h1 class="text-center mt-5">Bienvenue sur le site entre particuliers</h1>
 
-        <p class="fw-bold text-center text-primary">Vous êtes connecté en tant que prestataire de services.</p>
-        <div class="d-flex justify-content-center align-items-center">
-            <a class="btn btn-primary btn-lg m-1 w-30" href="{{ path('app_show_clients') }}">Voir les demandes de services</a>
-        </div>
-        
-    {% elseif app.user and is_granted('ROLE_CLIENT') %}
-        <p class="fw-bold text-center text-primary">Vous êtes connecté en tant que client.</p>
-        <div class="d-flex justify-content-center align-items-center">
-            <a class="btn btn-success btn-lg m-1 w-30" href="{{ path('app_show_providers') }}">Voir les offres de services prestataires</a>
-        </div>
-    {% else %}
-        <div class="d-flex justify-content-center align-items-center">
-            <div>
-                <a class="btn btn-outline-primary btn-lg m-1 w-30" href="{{ path('app_login') }}">Connectez-vous pour voir les services</a>
-            </div>
-            <div class="provider">
+	{% if app.user and is_granted('ROLE_PROVIDER') %}
+		<p class="fw-bold text-center text-primary">Vous êtes connecté en tant que prestataire de services.</p>
+		<div class="d-flex justify-content-center align-items-center">
+			<a class="btn btn-primary btn-lg m-1 w-30" href="{{ path('app_show_clients') }}">Voir les demandes de services</a>
+		</div>
 
-            </div>
-        </div>
-    {% endif %}
-       
+	{% elseif app.user and is_granted('ROLE_CLIENT') %}
+		<p class="fw-bold text-center text-primary">Vous êtes connecté en tant que client.</p>
+		<div class="d-flex justify-content-center align-items-center">
+			<a class="btn btn-success btn-lg m-1 w-30" href="{{ path('app_show_providers') }}">Voir les offres de services prestataires</a>
+		</div>
+	{% else %}
+
+		<div class="d-flex justify-content-center align-items-center">
+			<a class="btn btn-outline-primary btn-lg mt-5 w-30" href="{{ path('app_login') }}">Connectez-vous pour accéder aux services</a>
+		</div>
+	{% endif %}
+
+	<div class="d-flex justify-content-center align-items-center">
+		<img class="home" src="{{ asset('../images/service.png') }}" alt="Background Image">
+	</div>
+
 
 {% endblock %}

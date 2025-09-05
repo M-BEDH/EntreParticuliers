@@ -1,0 +1,7 @@
+img.home {
+    max-height: 500px;
+    position: relative;
+    top: -8rem;
+    z-index: -10;
+
+}

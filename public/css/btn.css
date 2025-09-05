@@ -1,0 +1,13 @@
+.btn-outline-primary {
+    background: linear-gradient(206deg, #484e5b 0%, #a5b3be 100%, #d8ebf2 100%);
+    filter: brightness(1.75);
+    border-color: #747475;
+    color: #222529;
+    padding: 10px;
+}
+
+.btn-outline-primary:hover {
+    border-color: #747475;
+    color: #222529;
+    filter: brightness(1.50);
+}
