@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Result Recherche{% endblock %}
+{% block title %}Resultat de la Recherche{% endblock %}
 
 {% block stylesheets %}
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
@@ -44,7 +44,6 @@
           <tr>
               <th>Nom</th>
               <th>Prénom</th>
-              
               <th>Services demandés</th>
           </tr>
       </thead>
@@ -52,9 +51,8 @@
           {% for service in services %}
               <tr>
                   <td>{{ service.lastName }}</td>
-                  <td>{{ service.firstName }}</td>
-            
-                  <td>{{ service.servicesRequested }}</td>
+                  <td>{{ service.firstName }}</td>        
+                  <td>{{ service.requestedService }}</td>
               </tr>
           {% endfor %}
       </tbody>

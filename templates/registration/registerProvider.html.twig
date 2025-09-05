@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="{{ asset('css/style.css') }}">
 {% endblock %}
 
-{% block title %}Inscription provider{% endblock %}
+{% block title %}Inscription prestataires de services{% endblock %}
 
 {% block body %}
 
 <div class="containerForm mt-5">
 
-    <h1 class="h3 mb-5 font-weight-normal">Inscription prestataire de services</h1>
+    <h1 class="h3 mb-5 font-weight-normal">Inscription prestataires de services</h1>
 
     {{ form_errors(registrationForm) }}
 
@@ -21,7 +21,7 @@
     {{ form_row(registrationForm.email, {'attr':{'class':'form form-control'}}) }}
      {{ form_row(registrationForm.city, {'attr':{'class':'form form-control'}}) }}
     {{ form_row(registrationForm.hourPrice, {'attr':{'class':'form form-control'}}) }}
-    {{ form_row(registrationForm.businessTrip, {'label': 'Acceptez-vous les déplacements dans un rayon de 10 km ?'}) }}
+    {{ form_row(registrationForm.businessTrip, {'label': 'Acceptez-vous les déplacements (+-) 10 km ?'}) }}
     {{ form_row(registrationForm.serviceOffered, {'attr':{'class':'form form-control'}}) }}
 
     {{ form_row(registrationForm.plainPassword, {

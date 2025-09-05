@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
@@ -20,9 +21,33 @@ class ServiceProviderType extends AbstractType
             ->add('lastName')
             ->add('city')
             ->add('email')
-            ->add('serviceOffered')
-            ->add('businessTrip')
-            ->add('hourPrice')
+            ->add('serviceOffered', null, [
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez indiquer l\'offre de service',
+                    ]),
+                ],
+                'label' => 'Offre de service :',
+                'required' => true,
+            ])
+            ->add('businessTrip', null, [
+                'label' => 'Déplacement professionnel :',
+                'required' => false,
+            ])
+            ->add('hourPrice', NumberType::class, [
+                'label' => 'Prix à l\'heure :',
+                'required' => true,
+                'scale' => 2,
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Veuillez indiquer le prix à l\'heure',
+                    ]),
+                    new \Symfony\Component\Validator\Constraints\Type([
+                        'type' => 'float',
+                        'message' => 'Le prix doit être un nombre décimal.',
+                    ]),
+                ],
+            ])
             ->add('plainPassword', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Les deux mots de passe doivent correspondre',

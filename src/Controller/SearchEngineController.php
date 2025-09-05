@@ -40,7 +40,7 @@ final class SearchEngineController extends AbstractController
         return $this->render('search_engine/index.html.twig', [
             'word' => $word,
             // 'servicesRequested' => $servicesRequested,
-            'service' => $servicesOffered,
+            'services' => $servicesOffered,
         ]);
     }
 
